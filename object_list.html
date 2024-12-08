@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: black;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .back-to-home {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 2px solid white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .back-to-home:hover {
+      background-color: yellow;
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .object {
+      background-color: #222;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      display: block; /* 让整个框可点击 */
+      color: white;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .object:hover {
+      transform: scale(1.02); /* 鼠标悬停时轻微放大 */
+      background-color: #333;
+    }
+
+    .object img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .object h2 {
+      font-size: 1.5em;
+      margin: 15px 0 10px;
+      color: yellow;
+    }
+
+    .object p {
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页按钮 -->
+  <a href="index.html" class="back-to-home">Back to Home</a>
+
+  <h1>Object List</h1>
+
+  <!-- 筷子 -->
+  <a href="chopsticks.html" class="object">
+    <h2>Chopsticks</h2>
+    <img src="chopsticks.jpg" alt="Chopsticks">
+    <p>A traditional dining tool used across East Asia, typically made from bamboo or wood. It represents cultural traditions and family connections.</p>
+  </a>
+
+  <!-- 汉服 -->
+  <a href="hanfu.html" class="object">
+    <h2>Hanfu</h2>
+    <img src="hanfu.jpg" alt="Hanfu">
+    <p>A Chinese traditional attire characterized by wide sleeves and cross-collar design, symbolizing cultural revival.</p>
+  </a>
+
+  <!-- 沙丽 -->
+  <a href="sari.html" class="object">
+    <h2>Sari</h2>
+    <img src="sari.jpg" alt="Sari">
+    <p>A traditional Indian attire made from a single piece of fabric, showcasing elegance and cultural craftsmanship.</p>
+  </a>
+
+  <!-- 非洲手鼓 -->
+  <a href="djembe.html" class="object">
+    <h2>African Drum (Djembe)</h2>
+    <img src="djembe.jpg" alt="African Drum">
+    <p>A traditional percussion instrument from West Africa, widely used in ceremonies and musical performances.</p>
+  </a>
+
+  <!-- 祷告毯 -->
+  <a href="prayer_rug.html" class="object">
+    <h2>Prayer Rug</h2>
+    <img src="prayer_rug.jpg" alt="Prayer Rug">
+    <p>A small rug used by Muslims during prayers, often decorated with geometric or religious patterns.</p>
+  </a>
+
+  <!-- 佛像 -->
+  <a href="buddha.html" class="object">
+    <h2>Buddha Statue</h2>
+    <img src="buddha.jpg" alt="Buddha Statue">
+    <p>A symbolic religious object found in Buddhist households and temples, representing faith and inner peace.</p>
+  </a>
+
+  <!-- 铜钱 -->
+  <a href="coin.html" class="object">
+    <h2>Chinese Coin</h2>
+    <img src="coin.jpg" alt="Chinese Coin">
+    <p>An ancient currency often used as decorations or talismans, symbolizing wealth and good fortune.</p>
+  </a>
+
+  <!-- 荷兰风车模型 -->
+  <a href="windmill.html" class="object">
+    <h2>Windmill Model</h2>
+    <img src="windmill.jpg" alt="Windmill Model">
+    <p>A cultural symbol of the Netherlands, often kept as a souvenir representing the homeland.</p>
+  </a>
+
+  <!-- 部落陶罐 -->
+  <a href="pottery.html" class="object">
+    <h2>Tribal Pottery</h2>
+    <img src="pottery.jpg" alt="Tribal Pottery">
+    <p>Traditional clay vessels used for storing food or water, often decorated with unique tribal patterns.</p>
+  </a>
+
+  <!-- 刺绣布料 -->
+  <a href="fabric.html" class="object">
+    <h2>Embroidery Fabric</h2>
+    <img src="fabric.jpg" alt="Embroidery Fabric">
+    <p>Hand-stitched fabric used for clothing or decoration, featuring intricate patterns that reflect local culture.</p>
+  </a>
+
+  <!-- 玛雅面具 -->
+  <a href="mayan_mask.html" class="object">
+    <h2>Mayan Mask</h2>
+    <img src="mayan_mask.jpg" alt="Mayan Mask">
+    <p>A ceremonial artifact from Central America, representing religious beliefs and cultural traditions.</p>
+  </a>
+
+  <!-- 扇子 -->
+  <a href="fan.html" class="object">
+    <h2>Fan</h2>
+    <img src="fan.jpg" alt="Fan">
+    <p>A traditional Japanese craft used for cooling or performance, often adorned with natural scenic designs.</p>
+  </a>
+
+  <!-- 珊瑚珠饰品 -->
+  <a href="coral.html" class="object">
+    <h2>Coral Jewelry</h2>
+    <img src="coral.jpg" alt="Coral Jewelry">
+    <p>Handcrafted bead accessories from East Africa, commonly used as gifts in weddings or rituals.</p>
+  </a>
+
+  <!-- 苏格兰格子呢 -->
+  <a href="tartan.html" class="object">
+    <h2>Scottish Tartan</h2>
+    <img src="tartan.jpg" alt="Scottish Tartan">
+    <p>A traditional Scottish fabric with colorful stripes, representing the heritage of different clans.</p>
+  </a>
+
+  <!-- 土耳其咖啡壶 -->
+  <a href="coffee_pot.html" class="object">
+    <h2>Turkish Coffee Pot</h2>
+    <img src="coffee_pot.jpg" alt="Turkish Coffee Pot">
+    <p>A Turkish coffee-making device, spreading unique brewing traditions worldwide.</p>
+  </a>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map of Migratory Objects</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: yellow;
+    }
+
+    #map {
+      width: 100%;
+      height: 600px;
+      margin: 20px auto;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 2px solid white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .nav-button:hover {
+      background-color: yellow;
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .left {
+      left: 20px;
+    }
+
+    .right {
+      right: 20px;
+    }
+
+    /* 修改弹出窗口链接文字颜色 */
+    .leaflet-popup-content a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .leaflet-popup-content a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页按钮 -->
+  <a href="index.html" class="nav-button left">Back to Home</a>
+  <!-- 返回 Object List 按钮 -->
+  <a href="object_list.html" class="nav-button right">Object List</a>
+
+  <h1>Map of Migratory Objects</h1>
+  <div id="map"></div>
+
+  <script>
+    // 初始化地图
+    const map = L.map('map').setView([20.0, 0.0], 2); // 地图中心点和缩放级别
+
+    // 添加 OpenStreetMap 瓦片层
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // 自定义图标
+    const destinationIcon = L.icon({
+      iconUrl: 'tag.png', // 目的地图标文件
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -30]
+    });
+
+    const originIcon = L.icon({
+      iconUrl: 'pin.png', // 出发地图标文件
+      iconSize: [20, 20],
+      iconAnchor: [10, 20],
+      popupAnchor: [0, -20]
+    });
+
+    // 数据：物品的迁移路径和标注点
+    const objects = [
+      { name: "Chopsticks", origin: [39.9042, 116.4074], destination: [40.7128, -74.0060], link: "chopsticks.html", image: "chopsticks.jpg" },
+      { name: "Hanfu", origin: [39.9042, 116.4074], destination: [51.5074, -0.1278], link: "hanfu.html", image: "hanfu.jpg" },
+      { name: "Sari", origin: [28.6139, 77.2090], destination: [43.651070, -79.347015], link: "sari.html", image: "sari.jpg" },
+      { name: "African Drum", origin: [12.6392, -8.0029], destination: [48.8566, 2.3522], link: "djembe.html", image: "djembe.jpg" },
+      { name: "Prayer Rug", origin: [24.7136, 46.6753], destination: [52.5200, 13.4050], link: "prayer_rug.html", image: "prayer_rug.jpg" },
+      { name: "Buddha Statue", origin: [15.8700, 100.9925], destination: [-33.8688, 151.2093], link: "buddha.html", image: "buddha.jpg" },
+      { name: "Chinese Coin", origin: [39.9042, 116.4074], destination: [37.7749, -122.4194], link: "coin.html", image: "coin.jpg" },
+      { name: "Windmill Model", origin: [52.3791, 4.9003], destination: [35.6895, 139.6917], link: "windmill.html", image: "windmill.jpg" },
+      { name: "Tribal Pottery", origin: [-1.286389, 36.817223], destination: [41.9028, 12.4964], link: "pottery.html", image: "pottery.jpg" },
+      { name: "Embroidery Fabric", origin: [33.9391, 67.7100], destination: [53.4808, -2.2426], link: "fabric.html", image: "fabric.jpg" },
+      { name: "Mayan Mask", origin: [19.4326, -99.1332], destination: [34.0522, -118.2437], link: "mayan_mask.html", image: "mayan_mask.jpg" },
+      { name: "Fan", origin: [36.2048, 138.2529], destination: [37.5665, 126.9780], link: "fan.html", image: "fan.jpg" },
+      { name: "Coral Jewelry", origin: [-6.7924, 39.2083], destination: [45.7640, 4.8357], link: "coral.html", image: "coral.jpg" },
+      { name: "Scottish Tartan", origin: [56.4907, -4.2026], destination: [42.3601, -71.0589], link: "tartan.html", image: "tartan.jpg" },
+      { name: "Turkish Coffee Pot", origin: [39.9208, 32.8541], destination: [59.3293, 18.0686], link: "coffee_pot.html", image: "coffee_pot.jpg" }
+    ];
+
+    // 添加标注点和迁移路径
+    objects.forEach(obj => {
+      // 添加出发地标注
+      L.marker(obj.origin, { icon: originIcon }).addTo(map)
+        .bindPopup(`<b>Origin:</b> ${obj.name}`);
+
+      // 添加目的地标注（带图片和链接）
+      L.marker(obj.destination, { icon: destinationIcon }).addTo(map)
+        .bindPopup(`
+          <div style="text-align: center;">
+            <img src="${obj.image}" alt="${obj.name}" style="width: 100px; height: auto; border-radius: 5px; margin-bottom: 10px;">
+            <br>
+            <a href="${obj.link}" target="_blank">${obj.name}</a>
+          </div>
+        `);
+
+      // 添加迁移路径
+      L.polyline([obj.origin, obj.destination], {
+        color: 'yellow',
+        weight: 2,
+        opacity: 0.8,
+        dashArray: '2, 5'
+      }).addTo(map).bindPopup(`<b>${obj.name} Migration Path</b>`);
+    });
+
+  </script>
+</body>
+</html>

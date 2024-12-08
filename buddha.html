@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buddha Statue</title>
+  <style>
+    body { background-color: black; color: white; font-family: Arial, sans-serif; padding: 20px; }
+
+    .back-to-list {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 2px solid white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .back-to-list:hover {
+      background-color: yellow;
+      color: black;
+      transform: scale(1.1);
+    }
+    img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 5px; margin-bottom: 20px; }
+    h1 { color: yellow; margin-bottom: 20px; }
+    p { font-size: 1.2em; line-height: 1.5em; }
+  </style>
+</head>
+<body>
+<!-- 返回到 Object List 页面按钮 -->
+  <a href="object_list.html" class="back-to-list">Back to Object List</a>
+
+  <h1>Buddha Statue</h1>
+  <img src="buddha.jpg" alt="Buddha Statue">
+  <p>A symbolic religious object found in Buddhist households and temples, representing faith and inner peace.</p>
+</body>
+</html>
